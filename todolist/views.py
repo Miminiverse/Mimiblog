@@ -1,4 +1,4 @@
-from pickle import FALSE
+
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from rest_framework.decorators import api_view
@@ -6,6 +6,9 @@ from rest_framework.response import Response
 from .serializers import TodoSerializer
 from .models import Todo
 from .forms import TodoForm
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+
 
 @api_view(['GET'])
 def taskList(request):
@@ -38,11 +41,46 @@ def home(request):
     context = {'lists' : lists}
     return render(request, 'todolist/home.html', context)
 
-def list(request, pk):
-    list = Todo.objects.get(id=pk)
-    context = {'list':list}
-    return render(request, 'todolist/list.html', context)
+class PostListView(ListView):
+    model = Todo
+    template_name = 'todolist/home.html'
+    context_object_name = 'posts'
+    ordering = ['-date_posted']
+    
+class PostDetailView(DetailView):
+    model = Todo
+    
+class PostCreateView(LoginRequiredMixin,CreateView):
+    model = Todo
+    fields = ['title', 'text', 'date_posted']
+    
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+    
+class PostUpdateView(LoginRequiredMixin,UserPassesTestMixin, UpdateView):
+    model = Todo
+    fields = ['title', 'text', 'date_posted']
+    
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+    
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.author:
+            return True
+        return False
 
+class PostDeleteView(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
+    model = Todo
+    success_url = '/'
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.author:
+            return True
+        return False
+    
 def add(request):
     form = TodoForm()
     if request.method == "POST":

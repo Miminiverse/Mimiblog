@@ -1,16 +1,18 @@
 {% extends 'todolist/base.html' %}
+
 {% block content %}
-    {% for list in lists %} 
+    {% for post in posts %} 
     <article class="media content-section">
         <div class="media-body">
           <div class="article-metadata">
-            <small class="text-muted">{{ list.author }}</small>
-            <small class="text-muted">{{ list.date_posted }}</small>
+            <small class="text-muted">{{ post.author }}</small>
+            <small class="text-muted">{{ post.date_posted }}</small>
           </div>
-          <h2><a class="article-title" href="{% url 'list' list.id %}">{{ list.title }}</a></h2>
-          <p class="article-content">{{ list.text }}</p>
+          <h2><a class="article-title" href="{% url 'post-detail' post.pk %} ">{{ post.title }}</a></h2>
+          <p class="article-content">{{ post.text }}</p>
         </div>
     </article>
 
     {% endfor %}
 {% endblock %}
+

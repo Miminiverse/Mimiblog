@@ -1,0 +1,17 @@
+{% extends 'todolist/base.html' %}
+
+{% block content %}
+    
+    <article class="media content-section">
+        <div class="media-body">
+          <div class="article-metadata">
+            <small class="text-muted">{{ object.author }}</small>
+            <small class="text-muted">{{ object.date_posted }}</small>
+          </div>
+          <h2 class="article-title" href="# ">{{ object.title }}</h2>
+          <p class="article-content">{{ object.text }}</p>
+        </div>
+    </article>
+
+{% endblock %}
+
