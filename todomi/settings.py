@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 
 ALLOWED_HOSTS = ['miminiverse.herokuapp.com',
@@ -165,4 +165,3 @@ AWS_DEFAULT_ACL = None
 DEFAULT_FILE_STORAGE='storages.backends.s3boto3.S3Boto3Storage'
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
-DEBUG_VALUE="True"
