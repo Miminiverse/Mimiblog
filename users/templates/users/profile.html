@@ -1,0 +1,17 @@
+
+{% extends 'todolist/base.html' %}
+{% load static %}
+{% block content %}
+
+          <div class="container">
+          <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+            <small> {{ user}} </small>
+          </div>
+          <div>
+            <a class="btn btn-outline" href="{% url 'profile-update' %}" > Update Profile </a>
+          </div>
+
+        
+
+
+{% endblock %}
