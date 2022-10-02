@@ -1,9 +1,19 @@
 {% extends 'todolist/base.html' %}
 {% block content %}
 <form method = "POST" >
+<<<<<<< HEAD
   {% csrf_token %}
   {{ form.as_p }}
   <input type="submit" value="Login">
 
 </form>
+=======
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Login">
+
+</form>
+
+
+>>>>>>> 5c6f3fc8b2eea0d7225e7b4b3f55d4cd27f8be7c
 {% endblock %}

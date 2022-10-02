@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #mimipretty
 #poiu1234
 
@@ -8,11 +9,21 @@
 
 #Django-Mimiblog 
 
+=======
+#mimila
+#poiu123
+
+#tester1
+#mimimo123
+>>>>>>> 5c6f3fc8b2eea0d7225e7b4b3f55d4cd27f8be7c
 
 from pathlib import Path
 import os
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5c6f3fc8b2eea0d7225e7b4b3f55d4cd27f8be7c
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,6 +32,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+<<<<<<< HEAD
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -30,6 +42,18 @@ DEBUG = True
 ALLOWED_HOSTS = ['miminiverse.herokuapp.com',
                     '127.0.0.1',
                 ]
+=======
+SECRET_KEY = 'django-insecure-_yfc&i7by_2!4h17w-(e$pv+6%_du%#9-ps57ci)sefp5788#0'
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True 
+
+
+
+
+
+ALLOWED_HOSTS = []
+>>>>>>> 5c6f3fc8b2eea0d7225e7b4b3f55d4cd27f8be7c
 
 
 # Application definition
@@ -44,12 +68,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
     'storages',
+=======
+>>>>>>> 5c6f3fc8b2eea0d7225e7b4b3f55d4cd27f8be7c
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+<<<<<<< HEAD
     'whitenoise.middleware.WhiteNoiseMiddleware',
+=======
+>>>>>>> 5c6f3fc8b2eea0d7225e7b4b3f55d4cd27f8be7c
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -128,17 +158,24 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
+<<<<<<< HEAD
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+=======
+STATIC_URL = 'static/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media').replace('\\', '/')
+>>>>>>> 5c6f3fc8b2eea0d7225e7b4b3f55d4cd27f8be7c
 MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
+<<<<<<< HEAD
 DEFAULT_AUTO_FIELD='django.db.models.BigAutoField'
 
 
@@ -162,3 +199,11 @@ AWS_DEFAULT_ACL = None
 DEFAULT_FILE_STORAGE='storages.backends.s3boto3.S3Boto3Storage'
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
+=======
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+LOGIN_REDIRECT_URL = 'home'
+LOGIN_URL = 'login'
+
+>>>>>>> 5c6f3fc8b2eea0d7225e7b4b3f55d4cd27f8be7c

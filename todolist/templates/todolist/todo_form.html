@@ -1,10 +1,19 @@
 {% extends 'todolist/base.html' %}
 {% block content %}
+<<<<<<< HEAD
 
 <form  method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Post" />
   </form>
+=======
+<form method = "POST" >
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Post">
+
+</form>
+>>>>>>> 5c6f3fc8b2eea0d7225e7b4b3f55d4cd27f8be7c
 
 {% endblock %}

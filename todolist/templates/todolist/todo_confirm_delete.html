@@ -1,5 +1,6 @@
 {% extends 'todolist/base.html' %}
 {% block content %}
+<<<<<<< HEAD
     <div class="content-section">
         <form method = "POST" >
         {% csrf_token %}
@@ -12,3 +13,13 @@
 </form>
 
 {% endblock %}
+=======
+<form method = "POST" >
+    {% csrf_token %}
+    <h2> Are you sure you want to delete the post "{{ object.title }}" ? </h2>
+    <input type="submit" value="Delete">
+
+</form>
+
+{% endblock %}
+>>>>>>> 5c6f3fc8b2eea0d7225e7b4b3f55d4cd27f8be7c

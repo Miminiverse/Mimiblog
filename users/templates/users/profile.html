@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 {% extends 'todolist/base.html' %}
 {% load static %}
@@ -14,6 +15,21 @@
           </div>
     {% endif %}
         
+=======
+{% extends 'todolist/base.html' %}
+{% block content %}
+
+    <div class="content-section">
+        <div class="media">
+        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+        <div class="media-body">
+            <h2 class="account-heading">{{user.username}}</h2>
+            <p class="text-secondary">{{user.email}}</p>
+        </div>
+        </div>
+        <a href="{% url 'update' %}" > UpDate Info </a>
+    </div>
+>>>>>>> 5c6f3fc8b2eea0d7225e7b4b3f55d4cd27f8be7c
 
 
 {% endblock %}

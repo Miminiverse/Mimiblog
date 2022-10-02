@@ -1,5 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html>
 <head>
 
@@ -15,6 +16,20 @@
         <title>MIMINIVERSE</title>
 </head>
 
+=======
+<html lang="en">
+<head> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'todolist/main.css' %}">
+
+    <title>MIMINIVERSE</title>
+
+
+</head>
+>>>>>>> 5c6f3fc8b2eea0d7225e7b4b3f55d4cd27f8be7c
 <body>
     <header class="site-header">
         <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
@@ -33,7 +48,10 @@
                 {% if user.is_authenticated %}
                   <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
                   <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+<<<<<<< HEAD
                   <a id=create-post class="nav-item nav-link" href="{% url 'post-create' %}">Create Post</a>
+=======
+>>>>>>> 5c6f3fc8b2eea0d7225e7b4b3f55d4cd27f8be7c
                 {% else %}
                   <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
                   <a class="nav-item nav-link" href="{% url 'register'%}">Register</a>
@@ -65,6 +83,7 @@
         </div>
     </main>
 </body>
+<<<<<<< HEAD
 </html>
 
     <!-- Optional JavaScript -->
@@ -73,4 +92,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
+=======
+>>>>>>> 5c6f3fc8b2eea0d7225e7b4b3f55d4cd27f8be7c
 </html>
