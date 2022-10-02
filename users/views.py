@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login, logout
 
 
 def register(request):
@@ -15,6 +16,7 @@ def register(request):
             username = form.cleaned_data.get('username')
             return redirect ('login')
     return render(request, 'users/register_form.html', {'form': form})
+
 
 
 @login_required

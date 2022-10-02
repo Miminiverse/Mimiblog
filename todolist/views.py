@@ -6,9 +6,10 @@ from rest_framework.response import Response
 from .serializers import TodoSerializer
 from .models import Todo
 from .forms import TodoForm
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+#from django.views.generic import ListView 
+#DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-
+from django.contrib.auth.decorators import login_required
 
 @api_view(['GET'])
 def taskList(request):
@@ -36,12 +37,10 @@ def taskDelete(request, pk):
     return Response(serializer.data)
 
 
-class PostListView(ListView):
-    model = Todo
-    context_object_name = 'posts'
-    ordering = ['date_posted']
 
-class PostDetailView(DetailView):
+
+"""
+class PostDetailView(LoginRequiredMixin,DetailView):
     model = Todo
 
 class PostCreateView(LoginRequiredMixin,CreateView):
@@ -73,21 +72,33 @@ class PostDeleteView(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
         post = self.get_object()
         if self.request.user == post.author:
             return True
-        return False
-    
-def add(request):
+        return False """
+
+def home(request):
+    posts = Todo.objects.all()
+    return render (request, 'todolist/todo_list.html', {'posts': posts})
+
+def detail(request, pk):
+    post = Todo.objects.get(id=pk)
+    return render (request, 'todolist/todo_detail.html', {'post': post})
+
+@login_required
+def create(request):
     form = TodoForm()
     if request.method == "POST":
-        form = TodoForm(request.POST)
-        if form.is_valid():
-            form.save()
+        form = TodoForm(request.POST, request.FILES)
+        if form.is_valid():         
+            post = form.save(commit=False)
+            post.user = request.user
+            post.save()
+            return redirect('home')  
         return redirect('home')
-
     context = {'form' : form}
-    return render (request, 'todolist/add_form.html', context )
+    return render (request, 'todolist/todo_form.html', context )
 
+@login_required
 def update(request, pk):
-    list = Todo.objects.get(id=pk)
+    post = Todo.objects.get(id=pk)
     form = TodoForm(instance=list)
 
     if request.method == "POST":
@@ -97,8 +108,9 @@ def update(request, pk):
         return redirect ('home')
     
     context = {'form':form}
-    return render (request, 'todolist/add_form.html', context)
+    return render (request, 'todolist/todo_form.html', context)
 
+@login_required
 def delete_de(request, pk):
 
         Todo.objects.get(id=pk).delete()

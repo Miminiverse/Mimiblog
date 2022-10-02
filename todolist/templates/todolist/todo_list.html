@@ -8,9 +8,12 @@
           <div class="article-metadata">
             <small class="text-muted">{{ post.author }}</small>
             <small class="text-muted">{{ post.date_posted }}</small>
+
+
           </div>
           <h2><a class="article-title" href="{% url 'post-detail' post.pk %} ">{{ post.title }}</a></h2>
           <p class="article-content">{{ post.text }}</p>
+          
         </div>
     </article>
 

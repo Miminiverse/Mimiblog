@@ -5,15 +5,18 @@
     <article class="media content-section">
         <div class="media-body">
           <div class="article-metadata">
-            <small class="text-muted">{{ object.author }}</small>
-            <small class="text-muted">{{ object.date_posted }}</small>
+            <small class="text-muted">{{ post.author }}</small>
+            <small class="text-muted">{{ post.date_posted }}</small>
+          <h2 class="article-title" > {{ post.title }} </h2>
+          <p class="article-content">{{ post.text }}</p>
+          <video class="embed-resposive embed-responsive-16by9" controls="controls" >
+            <source src="{{ post.audio.url }}" type="video/mp4"/>
           </div>
-          <h2 class="article-title" > {{ object.title }} </h2>
-          <p class="article-content">{{ object.text }}</p>
+          </video>
           {% if user.is_authenticated %}
           <div>
-            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.pk %} ">Update</a>
-            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.pk %} ">Delete</a>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' post.pk %} ">Update</a>
+            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' post.pk %} ">Delete</a>
           </div>
           {% endif %}
         </div>
