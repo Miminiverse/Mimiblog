@@ -6,6 +6,7 @@ from rest_framework.response import Response
 from .serializers import TodoSerializer
 from .models import Todo
 from .forms import TodoForm
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 #from django.views.generic import ListView 
 #DetailView, CreateView, UpdateView, DeleteView
@@ -16,6 +17,10 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 >>>>>>> 5c6f3fc8b2eea0d7225e7b4b3f55d4cd27f8be7c
+=======
+from django.contrib.auth.decorators import login_required
+import requests
+>>>>>>> Stashed changes
 
 @api_view(['GET'])
 def taskList(request):
@@ -59,10 +64,11 @@ class PostCreateView(LoginRequiredMixin,CreateView):
 
 =======
 def home(request):
-    lists = Todo.objects.all()
-    context = {'lists' : lists}
-    return render(request, 'todolist/home.html', context)
+    posts = Todo.objects.all()
+    context = {'posts' : posts}
+    return render(request, 'todolist/home.html', context=context)
 
+<<<<<<< Updated upstream
 class PostListView(ListView):
     model = Todo
     template_name = 'todolist/home.html'
@@ -136,17 +142,26 @@ def update(request, pk):
     post = Todo.objects.get(id=pk)
 =======
         return False
+=======
+def detail(request,pk):
+    post = Todo.objects.get(id=pk)
+    context = {'post':post}
+    return render(request, 'todolist/todo_detail.html', context=context)
     
-def add(request):
+
+def create(request):
+>>>>>>> Stashed changes
+    
     form = TodoForm()
     if request.method == "POST":
-        form = TodoForm(request.POST)
+        form = TodoForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
         return redirect('home')
-
+    else:
+        form = TodoForm()
     context = {'form' : form}
-    return render (request, 'todolist/add_form.html', context )
+    return render (request, 'todolist/todo_form.html', context=context )
 
 def update(request, pk):
     list = Todo.objects.get(id=pk)
@@ -160,16 +175,35 @@ def update(request, pk):
         return redirect ('home')
     
     context = {'form':form}
+<<<<<<< Updated upstream
 <<<<<<< HEAD
     return render (request, 'todolist/todo_form.html', context)
 
 @login_required
 =======
     return render (request, 'todolist/add_form.html', context)
+=======
+    return render (request, 'todolist/todo_form.html', context)
+>>>>>>> Stashed changes
 
 >>>>>>> 5c6f3fc8b2eea0d7225e7b4b3f55d4cd27f8be7c
 def delete_de(request, pk):
 
         Todo.objects.get(id=pk).delete()
         return redirect('home')
- 
+
+#@login_required
+#def audio(request): 
+#   audios = Audio.objects.all()
+#    if request.method == "POST":
+#       audios = Audio.objects.get(request.POST, request.FILES)
+#        if audio.is_valid():      
+#            audio.save()
+#        return redirect ('home')
+#    else:
+#        pass
+#    return render (request, 'todolist/audio.html')
+
+def api(request):
+    response=requests.get('https://api.openweathermap.org/data/2.5/weather?zip=07071,us&appid=21f42b3004b2101be892fffa001a8cd6&units=imperial').json()
+    return render(request, 'todolist/api.html', {'response':response})

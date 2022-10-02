@@ -37,7 +37,7 @@ def update(request):
 =======
 >>>>>>> 5c6f3fc8b2eea0d7225e7b4b3f55d4cd27f8be7c
         u_form = UserUpdateForm(request.POST, instance=request.user )
-        p_form = ProfileUpdateForm(request.POST, request.FILES, instance = request.user.profile)
+        p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
         if u_form.is_valid() and p_form.is_valid():
             u_form.save()
             p_form.save()
@@ -48,6 +48,6 @@ def update(request):
         
     context = { 
                'u_form' : u_form, 
-               'p_form': p_form 
+               'p_form': p_form, 
     }
     return render  (request, 'users/update_form.html', context)

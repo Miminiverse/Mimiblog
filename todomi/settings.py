@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 #mimipretty
 #poiu1234
@@ -11,6 +12,9 @@
 
 =======
 #mimila
+=======
+#mimixinhdepqua
+>>>>>>> Stashed changes
 #poiu123
 
 #tester1
@@ -105,6 +109,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -168,9 +173,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 =======
 STATIC_URL = 'static/'
 
+<<<<<<< Updated upstream
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media').replace('\\', '/')
 >>>>>>> 5c6f3fc8b2eea0d7225e7b4b3f55d4cd27f8be7c
 MEDIA_URL = '/media/'
+=======
+
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
+>>>>>>> Stashed changes
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

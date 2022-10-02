@@ -7,6 +7,7 @@ from users import views as user_views
 from django.conf import settings
 from django.conf.urls.static import static
 
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,6 +26,9 @@ urlpatterns = [
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
 =======
 urlpatterns = static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + [
+=======
+urlpatterns = [
+>>>>>>> Stashed changes
     path('admin/', admin.site.urls),
     path('', include('todolist.urls')), 
     path('register/', user_views.register, name = 'register'),
@@ -32,6 +36,12 @@ urlpatterns = static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + 
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name = 'logout'),
     path('profile/', user_views.profile, name = 'profile'),
     path('update/', user_views.update, name = 'update'),
+    
 ] 
+<<<<<<< Updated upstream
 
 >>>>>>> 5c6f3fc8b2eea0d7225e7b4b3f55d4cd27f8be7c
+=======
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+>>>>>>> Stashed changes

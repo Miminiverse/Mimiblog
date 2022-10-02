@@ -1,5 +1,6 @@
 {% extends 'todolist/base.html' %}
 {% block content %}
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 
 <form  method="post" enctype="multipart/form-data">
@@ -9,6 +10,9 @@
   </form>
 =======
 <form method = "POST" >
+=======
+<form enctype='multipart/form-data' method = "POST" >
+>>>>>>> Stashed changes
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Post">
